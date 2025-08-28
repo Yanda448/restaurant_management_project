@@ -9,9 +9,9 @@ from .serializers import ProductSerializer, OrderSerializer
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    permission_classes = [IsAuthenticated & IsManagerOrAdmin] #only Manager/Admin
+    permission_classes = [IsAuthenticated, IsManagerOrAdmin] #only Manager/Admin
 
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
-    permission_classes = [IsAuthenticated & IsWaiter] #Only Waiter
+    permission_classes = [IsAuthenticated, IsWaiter] #Only Waiter

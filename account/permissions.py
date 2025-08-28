@@ -6,7 +6,7 @@ class IsManagerOrAdmin(BasePermission):
         return request.user.is_authenticated and request.user.role in ['Manager', 'Admin']
 
 class IsWaiter(BasePermission):
-    """Only Wauter can create orders."""
+    """Only Waiter can create orders."""
     def has_permission(self, request, view):
         return request.user.is_authenticated and request.user.role == 'Waiter'
 
