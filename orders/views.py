@@ -4,12 +4,14 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Order
 from .serializers import OrderSerializer, OrderStatusUpdateSerializer
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 # Create & List Orders
 class OrderListCreateView(generics.ListCreateAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated] #only logged-in staff can access
 
 #Update Order Status
 class OrderStatusUpdateView(generics.UpdateAPIView):

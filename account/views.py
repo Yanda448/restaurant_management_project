@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
-from .permissions import IsManagerOrAdmin, IsWaiter, IsCashier
+from .permissions import IsManagerOrAdmin, IsWaiter, IsCashier, AllowAny
 from .models import Product, Order, MenuItem
-from .serializers import ProductSerializer, OrderSerializer, MenuItemSerializer
+from .serializers import ProductSerializer, OrderSerializer, MenuItemSerializer, StaffRegisterSerializer
 from rest_framework import generics
 
 # Create your views here.
@@ -20,3 +20,7 @@ class OrderViewSet(viewsets.ModelViewSet):
 class MenuListAPIView(generics.ListAPIView):
     queryset = MenuItem.objects.select_related("category").all()
     serializer_class = MenuItemSerializer
+
+class StaffRegisterView(generics.CreateAPIView):
+    serializer_class = StaffRegisterSerializer
+    permission_classes = [AllowAny]
