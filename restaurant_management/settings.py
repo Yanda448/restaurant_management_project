@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'account',
     'products',
     'orders',
+    'debug_toolbar',
 ]
 
 AUTH_USER_MODEL = 'account.User'
@@ -56,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'restaurant_management.urls'
@@ -141,3 +143,7 @@ CELERY_BEAT_SCHEDULE = {
     },
     
 }
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]

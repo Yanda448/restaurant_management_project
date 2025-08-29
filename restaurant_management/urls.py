@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from account.views import MenuListAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,4 +24,6 @@ urlpatterns = [
     path('api/accounts/',include('account.urls')),
     path('api/products/',include('products.urls')),
     path('api/orders/',include('orders.urls')),
+    path('api/menu/', MenuListAPIView.as_view(), name='menu-list'),
+    path('__debug__/', include(debug_toolbar.urls)),
 ]
